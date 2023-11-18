@@ -1,0 +1,206 @@
+<html>
+    <head>
+        <title>Nevigation</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>          
+        <style>
+body {
+    background-color: #081b29;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.nav {
+    width: 300px;
+    height: 300px;
+    background: transparent;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav li {
+    position: absolute;
+    cursor: pointer;
+    list-style: none;
+    left: 0;
+    transform-origin: 150px;
+    transform: rotate(0deg) translateX(120px) scale(1);
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 30px;
+    background: #ffffff;
+    font-size: 30px;
+    color: black;
+    display: grid;
+    place-items: center;
+    box-shadow: none;
+    zoom: 1;
+    transition: transform 0.5s calc(0.1s * var(--i)),
+                background 0.3s, 
+                color 0.3s, 
+                border 0.3s,
+                border-radius 0.3s, 
+                box-shadow 0.3s,
+                height 0.3s, 
+                width 0.3s, 
+                font-size 0.3s;
+}
+
+.nav.active li {
+    transform: rotate(calc(360deg / 8 * var(--i))) translateX(0) scale(1);
+    transition: transform 0.5s calc(0.1s * var(--i)),
+                background 0.3s, 
+                color 0.3s, 
+                border 0.3s,
+                border-radius 0.3s, 
+                box-shadow 0.3s,
+                height 0.3s, 
+                width 0.3s, 
+                font-size 0.3s;
+}
+
+.nav li ion-icon {
+    transform: rotate(calc(360deg / -8 * var(--i)))
+}
+
+.nav.active li:hover {
+    height: 80px;
+    width: 80px;
+    font-size: 50px;
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius: 15px;
+    box-shadow: 0 0 20px #ffffff, 0 0 40px #ffffff;
+    transition: transform 0.5s calc(0.1s * var(--i)),
+                background 0.3s, 
+                color 0.3s, 
+                border 0.3s,
+                border-radius 0.3s, 
+                box-shadow 0.3s,
+                height 0.3s, 
+                width 0.3s, 
+                font-size 0.3s;
+}
+
+.btn {
+    position: absolute;    
+    z-index: 999;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    width: 70px;
+    height: 70px;
+    background: white;
+    font-size: 40px;
+    border: none;
+    border-radius: 40px;
+    box-shadow: none;
+    color: black;
+    transform: rotate(0) scale(1);
+    transition: transform 1.5s,
+                height 0.3s,
+                width 0.3s,
+                background 0.3s,
+                font-size 0.3s,
+                border 0.3s,
+                border-radius 0.3s,
+                box-shadow 0.3s,
+                color 0.3s;
+}
+
+.nav.active .btn {
+    transform: rotate(315deg) scale(1);
+    transition: transform 1.5s,
+                height 0.3s,
+                width 0.3s,
+                background 0.3s,
+                font-size 0.3s,
+                border 0.3s,
+                border-radius 0.3s,
+                box-shadow 0.3s,
+                color 0.3s;
+}
+
+.btn.active:hover{
+    height: 90px;
+    width: 90px;
+    background: #081b29;
+    font-size: 70px;
+    border: 2px solid white;
+    border-radius: 15px;
+    box-shadow: 0 0 20px #ffffff, 0 0 40px #ffffff;
+    color: white;
+    transition: transform 1.5s,
+                height 0.3s,
+                width 0.3s,
+                background 0.3s,
+                font-size 0.3s,
+                border 0.3s,
+                border-radius 0.3s,
+                box-shadow 0.3s,
+                color 0.3s;
+}
+            
+        </style>
+    </head>
+    <body>
+        <div class="nav">
+            <div class="btn">
+                <ion-icon name="add-outline"></ion-icon>
+            </div>
+            <li style="--i:0;">
+                <ion-icon name="diamond-outline"></ion-icon>
+            </li>
+            <li style="--i:1;">
+                <ion-icon name="cube-outline"></ion-icon>
+            </li>
+            <li style="--i:2;">
+                <ion-icon name="document-text-outline"></ion-icon>
+            </li>
+            <li style="--i:3;">
+                <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+            </li>
+            <li style="--i:4;">
+                <ion-icon name="options-outline"></ion-icon>
+            </li>
+            <li style="--i:5;">
+                <ion-icon name="videocam-outline"></ion-icon>
+            </li>
+            <li style="--i:6;">
+                <ion-icon name="partly-sunny-outline"></ion-icon>
+            </li>
+            <li style="--i:7;">
+                <ion-icon name="image-outline"></ion-icon>
+            </li>
+        </div>
+        <script>
+const btn = document.querySelector(".btn");
+const container = document.querySelector(".nav");
+
+btn.onclick = () => {
+    container.classList.toggle('active');
+    
+    if (btn.classList.contains('active')) {
+        btn.classList.remove('active');
+    } else {
+        setTimeout(function() {
+            btn.classList.add('active');
+        }, 1500);
+    }
+};            
+        </script>
+    </body>
